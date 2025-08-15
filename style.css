@@ -445,3 +445,54 @@ footer {
     opacity: 1;
   }
 }
+/* Container: button ko page ke center me, card se bahar rakhne ke liye */
+.card-bottom-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;          /* <- yahan se button aur niche jayega (adjust kar sakte ho) */
+}
+
+/* Premium button look + 7s delay + animation */
+.premium-btn {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  padding: 14px 36px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;        /* "Click Me" ek hi line me */
+  line-height: 1;             /* compact text */
+  user-select: none;
+
+  /* Appear after 7s, phir soft pulse */
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  animation:
+    btnReveal 700ms cubic-bezier(.2,.8,.2,1) forwards 7s,
+    btnPulse 1.6s ease-in-out infinite 8s;
+
+  box-shadow: 0 10px 30px rgba(255, 75, 43, 0.35);
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+
+.premium-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 14px 40px rgba(255, 75, 43, 0.5);
+  filter: brightness(1.05);
+}
+
+/* Reveal from bottom */
+@keyframes btnReveal {
+  0%   { opacity: 0; transform: translateY(24px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* Subtle breathing pulse */
+@keyframes btnPulse {
+  0%,100% { transform: translateY(0) scale(1); }
+  50%     { transform: translateY(-1px) scale(1.04); }
+}
